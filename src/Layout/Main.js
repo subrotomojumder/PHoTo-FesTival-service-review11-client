@@ -5,9 +5,11 @@ import Header from '../component/Shared/Header';
 
 const Main = () => {
     return (
-        <div className='mx-4 lg:mx-20'>
+        <div className='px-1 lg:mx-20 bg-base-200'>
             <Header></Header>
-            <Outlet></Outlet>
+            <div className='min-h-[90vh] flex items-center'>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );
