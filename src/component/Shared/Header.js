@@ -1,13 +1,23 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
     const navItem = <>
-        <Link to='/'><li>Home</li></Link>
-        <Link to=''><li></li></Link>
-        <Link to=''><li></li></Link>
-        <Link to=''><li></li></Link>
+        <Link to='/'><li className='mx-2 font-semibold hover:text-blue-500'>Home</li></Link>
+        { user &&
+            <>
+                <Link to=''><li className='mx-2 font-semibold hover:text-blue-500'>My-Reviews</li></Link>
+                <Link to='add-service'><li className='mx-2 font-semibold hover:text-blue-500'>Add-Service</li></Link>
+            </>
+        }
+        <Link to=''><li className='mx-2 font-semibold hover:text-blue-500'>Blog</li></Link>
     </>
+    const handleLogout = () => {
+        logOut().then().catch(err => console.log(err.message))
+    }
     return (
         <div className="navbar bg-neutral text-neutral-content">
             <div className="navbar-start">
@@ -19,7 +29,8 @@ const Header = () => {
                         {navItem}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                <img className='hidden lg:block w-12 rounded' src="https://images.freeimages.com/images/large-previews/52e/fast-camara-1243005.jpg" alt="" />
+                <Link to='/'><p className="text-2xl normal-case font-semibold lg:ml-2">PHoTo <span className='text-blue-500'>FesTival</span></p></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
@@ -27,7 +38,11 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'><button className='btn btn-accent lg:mr-2'>Login</button></Link>
+                {
+                    user?.email ?
+                        <button onClick={handleLogout} className='btn btn-accent lg:mr-2'>Logout</button>
+                        : <Link to='/login'><button className='btn btn-primary lg:mr-2'>Login</button></Link>
+                }
             </div>
         </div>
     );
