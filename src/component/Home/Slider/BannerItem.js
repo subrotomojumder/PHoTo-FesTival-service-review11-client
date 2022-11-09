@@ -15,7 +15,7 @@ const BannerItem = ({ item }) => {
                 <a href={`#slide${next}`} className="btn btn-circle ml-8">❯</a>
             </div>
             <div className="absolute transform -translate-y-1/2 bottom-10 left-12 top-1/2 text-white md:w-1/2">
-                <h2 className='text-xl font-serif mb-3 text-orange-300'><FaCamera className='inline text-lg mb-2 text-white' /> PHoTo FesTival</h2>
+                <h2 className='text-xl font-serif mb-3 text-orange-200'><FaCamera className='inline text-lg mb-2 text-white' /> PHoTo FesTival</h2>
                 <h3 className='text-4xl font-bold mb-4'>{event} <sub className='text-2xl text-blue-300'>Photography</sub></h3>
                 <h4>Get in touch to cherish some of life's memorable moments. Videos and photos are taken with special DSLR camera.</h4>
             </div>
