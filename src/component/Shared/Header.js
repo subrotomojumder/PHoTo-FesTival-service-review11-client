@@ -7,7 +7,7 @@ const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     const navItem = <>
         <Link to='/'><li className='mx-2 font-semibold hover:text-blue-500'>Home</li></Link>
-        { user &&
+        {user &&
             <>
                 <Link to=''><li className='mx-2 font-semibold hover:text-blue-500'>My-Reviews</li></Link>
                 <Link to='add-service'><li className='mx-2 font-semibold hover:text-blue-500'>Add-Service</li></Link>
@@ -40,8 +40,11 @@ const Header = () => {
             <div className="navbar-end">
                 {
                     user?.email ?
-                        <button onClick={handleLogout} className='btn btn-accent lg:mr-2'>Logout</button>
-                        : <Link to='/login'><button className='btn btn-primary lg:mr-2'>Login</button></Link>
+                        <>
+                            <img className='w-10 h-10 mr-2 rounded-full' title={user.displayName} src={user.photoURL ? user.photoURL : 'https://i.pinimg.com/736x/de/59/4e/de594ec09881da3fa66d98384a3c72ff.jpg'} alt="" />
+                            <button onClick={handleLogout} className='btn btn-accent lg:mr-2'>Logout</button>
+                        </>
+                        : <Link to='/login'><button className='btn btn-primary lg:mr-4'>Login</button></Link>
                 }
             </div>
         </div>

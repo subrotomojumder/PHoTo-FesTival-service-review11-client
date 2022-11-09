@@ -8,7 +8,7 @@ const BannerItem = ({ item }) => {
     return (
         <div id={`slide${id}`} className="carousel-item relative w-full">
             <div className='carousel-img w-full'>
-                <img src={img} alt='' className="w-full h-[80vh]" />
+                <img src={img} alt='' className="w-full h-[85vh]" />
             </div>
             <div className="absolute flex  transform -translate-y-1/2 bottom-14 right-1/4">
                 <a href={`#slide${pre}`} className="btn btn-circle">❮</a>

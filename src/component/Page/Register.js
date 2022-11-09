@@ -1,19 +1,24 @@
 import React, { useContext, useState } from 'react';
 import { FaGooglePlusG } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
     const [inputInfo, setInputInfo] = useState({});
     const [error, setError] = useState('');
     const { createUser, updateUser, googleLogin } = useContext(AuthContext);
-
+    const navigate = useNavigate();
+    
     const handleSubmit = e => {
         e.preventDefault();
         setError('');
         createUser(inputInfo.email, inputInfo.password)
-            .then(res => {
-                updateUser(inputInfo.name, inputInfo.photoUrl).then().catch(err=> setError(err.message));
+        .then(res => {
+            updateUser(inputInfo.name, inputInfo.photoUrl)
+                .then(() => {
+                    navigate('/');
+                })
+                .catch(err=> setError(err.message));
             })
             .catch(err => {
                 setError(err.message)

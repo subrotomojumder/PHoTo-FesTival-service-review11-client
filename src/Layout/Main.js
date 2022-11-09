@@ -5,7 +5,7 @@ import Header from '../component/Shared/Header';
 
 const Main = () => {
     return (
-        <div className='px-1 lg:mx-20 bg-slate-50'>
+        <div className='px-1 lg:mx-20 bg-slate-50 relative'>
             <Header></Header>
             <div className='min-h-[90vh] flex items-center'>
                 <Outlet></Outlet>
