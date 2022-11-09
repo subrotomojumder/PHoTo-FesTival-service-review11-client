@@ -20,10 +20,20 @@ const ReviewForm = ({service}) => {
             serviceImg: service.servicePhoto,
             serviceId: service._id
         }
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
 
-        console.log(review)
-
-    }
+    };
+    
     return (
         <div className='mx-6 border-2 p-4 bg-orange-200'>
             <form onSubmit={handleAddReview} >
