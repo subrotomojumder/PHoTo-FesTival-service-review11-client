@@ -10,7 +10,7 @@ const AllService = () => {
     }, [])
     return (
         <div className='my-20'>
-            <h2 className='text-3xl text-primary font-semibold text-center font-serif'>Some of my service</h2>
+            <h2 className='text-3xl text-primary font-semibold text-center font-serif'>My All service</h2>
             <div className='lg:grid grid-cols-3 gap-4 my-8'>
                 {
                     services.map(service => <SingleService
