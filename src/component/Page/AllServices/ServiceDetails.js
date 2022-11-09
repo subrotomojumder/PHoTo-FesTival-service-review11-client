@@ -1,11 +1,11 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
+import ReviewForm from '../Review/ReviewForm';
 
 const ServiceDetails = () => {
     const service = useLoaderData();
-    console.log(service)
-    const { serviceName, servicePhoto, description, charge, ratings, _id } = service;
+    const { serviceName, servicePhoto, description, charge, ratings } = service;
     return (
         <div>
             <div className='lg:grid grid-cols-2 my-8'>
@@ -19,10 +19,10 @@ const ServiceDetails = () => {
                                     <h3 className='text-xl mb-1'>My Demand: <span className='text-warning'>{charge}tk</span></h3>
                                     <p>Contact: <span className='font-semibold'>hanif@12gmail.com</span></p>
                                 </div>
-                                <div className='flex items-center mr-4'> 
-                                    Ratings: 
+                                <div className='flex items-center mr-4'>
+                                    Ratings:
                                     {
-                                        [...Array(+ratings).keys()].map(ret => <FaStar className='text-yellow-300 ml-1' />)
+                                        [...Array(+ratings).keys()].map(ret => <FaStar className='text-yellow-300 ml-1' key={ret}/>)
                                     }
                                 </div>
                             </div>
@@ -33,9 +33,10 @@ const ServiceDetails = () => {
                 </div>
                 <div className=''>
                     <h1 className='text-center text-2xl font-semibold text-primary'>Service Review</h1>
-                    <hr className='mx-4 lg:mx-14' />
+                    <hr className='mx-4 lg:mx-14 mt-1' />
                     <div>
-                        
+                        <ReviewForm service={service}></ReviewForm>
+
                     </div>
                 </div>
             </div>
