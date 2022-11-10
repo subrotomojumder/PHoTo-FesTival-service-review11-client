@@ -17,7 +17,7 @@ const MyReview = () => {
     useTitle('Review')
     useEffect(() => {
         if (user?.email) {
-            fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+            fetch(`https://service-review-server-lake.vercel.app/reviews?email=${user?.email}`, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('review-token')}`
                 }
@@ -38,7 +38,7 @@ const MyReview = () => {
     const handleDeleteReview = (id) => {
         const agree = window.confirm('Are you sure want to delete !');
         if (agree) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://service-review-server-lake.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -63,7 +63,7 @@ const MyReview = () => {
             rating,
             date
         }
-        fetch(`http://localhost:5000/reviews/${reviewId}`, {
+        fetch(`https://service-review-server-lake.vercel.app/reviews/${reviewId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

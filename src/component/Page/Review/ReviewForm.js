@@ -24,7 +24,7 @@ const ReviewForm = ({service, setRefresh}) => {
             serviceImg: service.servicePhoto,
             serviceId: service._id
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://service-review-server-lake.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -42,7 +42,7 @@ const ReviewForm = ({service, setRefresh}) => {
 
     };
     return (
-        <div className='border-2 bg-orange-200 sticky top-0'>
+        <div className='border-2 bg-blue-100 shadow-lg rounded-md sticky top-0'>
             <form onSubmit={handleAddReview} className='relative px-4 py-2'>
                 <div className='flex'>
                     <div className="form-control w-full mr-3">

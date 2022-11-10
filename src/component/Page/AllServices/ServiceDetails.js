@@ -13,12 +13,12 @@ const ServiceDetails = () => {
     useTitle('Details')
     // loaded all reviews
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://service-review-server-lake.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setAllReview(data))
     }, [_id, refresh])
     return (
-        <div className='lg:grid grid-cols-2 my-8 relative'>
+        <div className='lg:grid grid-cols-2 mt-1 mb-8 relative'>
             <div>
                 <div className="card card-compact bg-slate-100 shadow-lg my-5 lg:my-0 border lg:sticky top-0">
                     <img src={servicePhoto} alt="" className='w-fll' />

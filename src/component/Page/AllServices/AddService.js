@@ -7,7 +7,7 @@ const AddService = () => {
     useTitle('Add-Service-')
     const handleSubmit = e => {
         e.preventDefault();
-        fetch('http://localhost:5000/services', {
+        fetch('https://service-review-server-lake.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
