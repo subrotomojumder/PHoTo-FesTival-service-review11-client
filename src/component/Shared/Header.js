@@ -6,14 +6,14 @@ import { AuthContext } from '../../context/AuthProvider';
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     const navItem = <>
-        <Link to='/'><li className='mx-2 font-semibold hover:text-blue-500'>Home</li></Link>
+        <Link to='/'><li className='mx-2 text-blue-600 lg:text-white font-semibold hover:text-blue-500'>Home</li></Link>
         {user &&
             <>
-                <Link to='/my-reviews'><li className='mx-2 font-semibold hover:text-blue-500'>My-Reviews</li></Link>
-                <Link to='add-service'><li className='mx-2 font-semibold hover:text-blue-500'>Add-Service</li></Link>
+                <Link to='/my-reviews'><li className='mx-2 text-blue-600 lg:text-white font-semibold hover:text-blue-500'>My-Reviews</li></Link>
+                <Link to='add-service'><li className='mx-2 text-blue-600 lg:text-white font-semibold hover:text-blue-500'>Add-Service</li></Link>
             </>
         }
-        <Link to='/blog'><li className='mx-2 font-semibold hover:text-blue-500'>Blog</li></Link>
+        <Link to='/blog'><li className='mx-2 text-blue-600 lg:text-white font-semibold hover:text-blue-500'>Blog</li></Link>
     </>
     const handleLogout = () => {
         logOut().then().catch(err => console.log(err.message))

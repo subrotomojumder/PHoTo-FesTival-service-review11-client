@@ -11,15 +11,28 @@ import MyReviewRow from './MyReviewRow';
 const MyReview = () => {
     const [myReview, setMyReview] = useState([]);
     const [reviewId, setReviewId] = useState('');
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const date = new Date().toLocaleDateString();
-    
+
     useTitle('Review')
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setMyReview(data))
-    }, [user.email])
+        if (user?.email) {
+            fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('review-token')}`
+                }
+            })
+                .then(res => {
+                    if (res.status === 401 || res.status === 403) {
+                        return logOut()
+                            .then()
+                            .catch(e => console.error(e.message));
+                    }
+                    return res.json();
+                })
+                .then(data => setMyReview(data))
+        }
+    }, [user?.email])
 
     // review delete function
     const handleDeleteReview = (id) => {
@@ -38,7 +51,7 @@ const MyReview = () => {
                 })
         }
     };
-    
+
     // review updateFunction
     const handleUpdateReview = e => {
         e.preventDefault();
@@ -53,23 +66,23 @@ const MyReview = () => {
         fetch(`http://localhost:5000/reviews/${reviewId}`, {
             method: 'PATCH',
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
             body: JSON.stringify(updateData)
         })
-        .then(res => res.json())
-        .then(data => {
-            if (data.modifiedCount) {
-                form.reset();
-                const remaining = myReview.filter(review => review._id !== reviewId);
-                const updated = myReview.find(review => review._id === reviewId);
-                updated.reviewText = reviewText;
-                updated.rating = rating;
-                updated.date = date;
-                setMyReview([updated, ...remaining])
-                toast.success('Your review updated');
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    form.reset();
+                    toast.success('Your review updated');
+                    const remaining = myReview.filter(review => review._id !== reviewId);
+                    const updated = myReview.find(review => review._id === reviewId);
+                    updated.reviewText = reviewText;
+                    updated.rating = rating;
+                    updated.date = date;
+                    setMyReview([updated, ...remaining])
+                }
+            })
     };
     return (
         <div>
@@ -88,7 +101,7 @@ const MyReview = () => {
                     {myReview &&
                         <tbody>
                             {
-                                myReview.map(review => <MyReviewRow
+                                myReview?.map(review => <MyReviewRow
                                     key={review._id}
                                     review={review}
                                     handleDeleteReview={handleDeleteReview}
@@ -98,7 +111,7 @@ const MyReview = () => {
                         </tbody>
                     }
                 </table>
-                {myReview.length < 1 && <h1 className='text-center text-2xl mt-20'>No reviews added were!</h1>}
+                {myReview?.length < 1 && <h1 className='text-center text-2xl mt-20'>No reviews added were!</h1>}
             </div>
             <>
                 <input type="checkbox" id="my-modal-3" className="modal-toggle" />

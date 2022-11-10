@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 
 const ReviewForm = ({service, setRefresh}) => {
@@ -64,7 +65,7 @@ const ReviewForm = ({service, setRefresh}) => {
                 </div>
                 <h3 className='absolute top-0 left-1/3 text-sm ml-8'>{time}</h3>
                 <div className='text-center mt-4'>
-                    <h4 className={`${user?.email && 'hidden'} text-xl mb-2 text-gray-700`}>Please login and add a review</h4>
+                    <h4 className={`${user?.email && 'hidden'} text-xl mb-2 text-gray-700 hover:link link-primary`}><Link to='/login'>Please login and add a review</Link></h4>
                     <button className='btn btn-warning font-semibold' disabled={!user?.email}>Add Review</button>
                 </div>
             </form>

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { json, Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FaGooglePlusG } from "react-icons/fa";
 import { useTitle } from '../../Hooks/UseTitle';
+import { setAuthToken } from '../../api/AuthToken';
 
 const Login = () => {
     const [inputInfo, setInputInfo] = useState({});
@@ -20,7 +21,8 @@ const Login = () => {
         setError('');
         userLogin(inputInfo.email, inputInfo.password)
         .then(results => {
-            // const user = results.user;
+            const user = results.user.email;
+            setAuthToken(user);
             navigate(from, {replace: true})
         })
         .catch(err => setError(err.message))
@@ -30,7 +32,9 @@ const Login = () => {
     }
     const handleGoogleLogin = () => {
         googleLogin()
-        .then(res => {
+        .then(results => {
+            const user = results.user.email;
+            setAuthToken(user)
             navigate(from, {replace: true})
         })
         .then(err => setError(err.message))

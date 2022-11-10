@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
+import { setAuthToken } from '../../api/AuthToken';
 import { AuthContext } from '../../context/AuthProvider';
 import { useTitle } from '../../Hooks/UseTitle';
 
@@ -17,7 +18,9 @@ const Register = () => {
         createUser(inputInfo.email, inputInfo.password)
         .then(res => {
             updateUser(inputInfo.name, inputInfo.photoUrl)
-                .then(() => {
+                .then(results => {
+                    const user = results.user.email;
+                    setAuthToken(user);
                     navigate('/');
                 })
                 .catch(err=> setError(err.message));
@@ -31,8 +34,9 @@ const Register = () => {
     }
     const handleGoogleLogin = () => {
         googleLogin()
-        .then(res => {
-            
+        .then(results => {
+            const user = results.user.email;
+            setAuthToken(user);
         })
         .then(err => setError(err.message))
     }
