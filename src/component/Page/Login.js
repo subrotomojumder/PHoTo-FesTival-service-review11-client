@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { json, Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FaGooglePlusG } from "react-icons/fa";
 import { useTitle } from '../../Hooks/UseTitle';
@@ -19,7 +19,8 @@ const Login = () => {
         e.preventDefault();
         setError('');
         userLogin(inputInfo.email, inputInfo.password)
-        .then(res => {
+        .then(results => {
+            // const user = results.user;
             navigate(from, {replace: true})
         })
         .catch(err => setError(err.message))
