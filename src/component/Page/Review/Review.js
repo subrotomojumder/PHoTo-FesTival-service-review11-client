@@ -5,7 +5,7 @@ const Review = ({ review }) => {
     const { date, reviewText, rating, reviewers, reviewerPhoto, reviewerEmail } = review;
     return (
         <div className="p-5 rounded shadow-sm">
-            <div className='flex mt-3'>
+            <div className='flex'>
                 <img className='w-12 h-12 rounded-full' src={reviewerPhoto} alt="" />
                 <div className='ml-2'>
                     <span className='mt-4 space'>{reviewers}</span>
@@ -17,7 +17,7 @@ const Review = ({ review }) => {
             <p className="mb-2 text-sm text-gray-900">
                 Ratings :
                 {
-                    [...Array(+rating).keys()].map(r => <FaStar className='inline text-warning ml-2 mb-1' />)
+                    [...Array(+rating).keys()].map(r => <FaStar key={r} className='inline text-warning ml-2 mb-1' />)
                 }
             </p>
             <p className='font-light'>Date: {date}</p>

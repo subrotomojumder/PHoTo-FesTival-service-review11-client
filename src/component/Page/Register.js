@@ -2,12 +2,14 @@ import React, { useContext, useState } from 'react';
 import { FaGooglePlusG } from "react-icons/fa";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
+import { useTitle } from '../../Hooks/UseTitle';
 
 const Register = () => {
     const [inputInfo, setInputInfo] = useState({});
     const [error, setError] = useState('');
     const { createUser, updateUser, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate();
+    useTitle('Register')
     
     const handleSubmit = e => {
         e.preventDefault();

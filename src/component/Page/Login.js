@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { FaGooglePlusG } from "react-icons/fa";
+import { useTitle } from '../../Hooks/UseTitle';
 
 const Login = () => {
     const [inputInfo, setInputInfo] = useState({});
@@ -12,6 +13,7 @@ const Login = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
+    useTitle('Login')
 
     const handleSubmit = e => {
         e.preventDefault();

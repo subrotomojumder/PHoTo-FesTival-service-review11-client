@@ -3,12 +3,14 @@ import { useLoaderData } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 import ReviewForm from '../Review/ReviewForm';
 import Review from '../Review/Review';
+import { useTitle } from '../../../Hooks/UseTitle';
 
 const ServiceDetails = () => {
     const [allReview, setAllReview] = useState([]);
     const [refresh, setRefresh] = useState(true);
     const service = useLoaderData();
     const { serviceName, servicePhoto, description, charge, ratings, _id } = service;
+    useTitle('Details')
     // loaded all reviews
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)

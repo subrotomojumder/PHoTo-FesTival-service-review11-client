@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useTitle } from '../../../Hooks/UseTitle';
 
 const AddService = () => {
     const [inputInfo, setInputInfo] = useState({});
-
+    useTitle('Add-Service-')
     const handleSubmit = e => {
         e.preventDefault();
         fetch('http://localhost:5000/services', {

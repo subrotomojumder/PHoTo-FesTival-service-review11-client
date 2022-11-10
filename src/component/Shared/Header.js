@@ -9,7 +9,7 @@ const Header = () => {
         <Link to='/'><li className='mx-2 font-semibold hover:text-blue-500'>Home</li></Link>
         {user &&
             <>
-                <Link to=''><li className='mx-2 font-semibold hover:text-blue-500'>My-Reviews</li></Link>
+                <Link to='/my-reviews'><li className='mx-2 font-semibold hover:text-blue-500'>My-Reviews</li></Link>
                 <Link to='add-service'><li className='mx-2 font-semibold hover:text-blue-500'>Add-Service</li></Link>
             </>
         }

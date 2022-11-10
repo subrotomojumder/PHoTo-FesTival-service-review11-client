@@ -4,9 +4,9 @@ const Footer = () => {
     return (
         <footer className="footer footer-center p-10 bg-gray-800 text-primary-content">
             <div>
-                <img className='w-20' src="https://media.cnn.com/api/v1/images/stellar/prod/201120161612-best-dslr-cameras-for-beginners-sd.jpg?q=w_2000,h_1125,x_0,y_0,c_fill" alt="" />
+                <img className='h-12 w-20' src="https://m.media-amazon.com/images/I/919yB90BcSL._AC_SL1500_.jpg" alt="" />
                 <p className="font-bold">
-                PHoTo FesTival. <br />Providing reliable tech since 1992
+                    PHoTo FesTival. <br />Providing reliable tech since 1992
                 </p>
                 <p>Copyright © 2022 - All right reserved</p>
             </div>
