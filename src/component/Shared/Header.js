@@ -13,7 +13,7 @@ const Header = () => {
                 <Link to='add-service'><li className='mx-2 font-semibold hover:text-blue-500'>Add-Service</li></Link>
             </>
         }
-        <Link to=''><li className='mx-2 font-semibold hover:text-blue-500'>Blog</li></Link>
+        <Link to='/blog'><li className='mx-2 font-semibold hover:text-blue-500'>Blog</li></Link>
     </>
     const handleLogout = () => {
         logOut().then().catch(err => console.log(err.message))

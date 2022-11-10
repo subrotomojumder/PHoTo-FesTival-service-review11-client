@@ -23,13 +23,13 @@ const MyReviewRow = ({review, handleDeleteReview}) => {
                 <br />
                 <span className="badge badge-ghost badge-sm">{reviewers}</span>
             </td>
-            <td>{[...Array(+rating).keys()].map(r => <FaStar className='inline ml-1 text-yellow-500' key={r}/>) }</td>
+            <td className='hidden lg:block'>{[...Array(+rating).keys()].map(r => <FaStar className='inline ml-1 text-yellow-500' key={r}/>) }</td>
             <th>
-                <button className="btn btn-ghost btn-xs">Update</button>
+                <button className="btn btn-ghost btn-xs">Edit</button>
             </th>
             <th>
                 <label>
-                    <button onClick={()=>handleDeleteReview(_id)}><FaTrash className='text-gray-600 text-lg'></FaTrash></button>
+                    <button className='btn btn-ghost btn-xs btn-circle' onClick={()=>handleDeleteReview(_id)}><FaTrash className='text-gray-600 text-lg hover:text-red-500'></FaTrash></button>
                 </label>
             </th>
         </tr>
