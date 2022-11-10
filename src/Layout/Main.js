@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <div className='px-1 lg:mx-20 bg-slate-50 relative'>
             <Header></Header>
-            <div className='min-h-[90vh] flex items-center'>
+            <div className='min-h-[90vh]'>
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

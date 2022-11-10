@@ -15,6 +15,17 @@ const MyReview = () => {
             .then(data => setMyReview(data))
     }, [user.email])
 
+    const handleDeleteReview = (id) => {
+        const agree = window.confirm('Are you sure want to delete !');
+        if (agree) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data => console.log(data))
+        }
+    }
+
     useTitle('Review')
     return (
         <div>
@@ -23,15 +34,11 @@ const MyReview = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th>Events</th>
+                            <th><span className='ml-3'>Events Activity</span></th>
                             <th>Review</th>
-                            <th>Favorite Color</th>
-                            <th></th>
-                            <th>
-                                <label>
-
-                                </label>
-                            </th>
+                            <th>Ratings</th>
+                            <th>Update</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,6 +46,7 @@ const MyReview = () => {
                             myReview.map(review => <MyReviewRow
                             key={review._id}
                             review={review}
+                            handleDeleteReview={handleDeleteReview}
                             ></MyReviewRow>)
                         }
                     </tbody>

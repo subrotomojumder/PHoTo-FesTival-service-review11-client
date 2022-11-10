@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
 
     // console.log(location)
     if (loading) {
-        return <div className='flex justify-center'><progress className="progress w-56 ml-40 lg:ml-96"></progress></div>
+        return <div className='flex justify-center'><progress className="progress w-56 mt-10"></progress></div>
     }
 
     if(user && user.uid){
