@@ -12,15 +12,15 @@ const SingleService = ({ service }) => {
                 </PhotoView>
                 <div className="card-body">
                     <h2 className="card-title text-3xl text-gray-600"><span className='text-lg'>Events: </span>{serviceName}</h2>
-                            <h3 className='text-xl'>My Demand: <span className='text-warning'>{charge}tk</span></h3>
+                    <h3 className='text-xl'>My Demand: <span className='text-warning'>{charge}tk</span></h3>
                     <div className="card-actions justify-between my-2">
                         <div>
-                    <h3 className='text-lg'>Special Photography</h3>
+                            <h3 className='text-lg'>Special Photography</h3>
                             <p>Contact: <span className='font-semibold'>hanif@12gmail.com</span></p>
                         </div>
                         <Link to={`/services/${_id}`}><button className="btn btn-outline btn-primary">View Details</button></Link>
                     </div>
-                    <p><span className='text-primary'>Description:</span> {description.length > 100 ? description.slice(0, 100) + '....' : description}</p>
+                    <p><span className='text-primary'>Description:</span> {description?.length > 100 ? description.slice(0, 100) + '....' : description}</p>
                 </div>
             </div>
         </div>

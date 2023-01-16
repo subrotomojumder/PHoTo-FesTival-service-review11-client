@@ -8,23 +8,23 @@ const Banner = () => {
     const carouselItems = [
         {
             img: wadding,
-            id: 1,
-            pre: 3,
-            next: 2,
+            id: "636a778e091d5166f558affe",
+            pre: "636a793b091d5166f558afff",
+            next: "636a7f71091d5166f558b001",
             event: 'Wadding',
         },
         {
             img: tour,
-            id: 2,
-            pre: 1,
-            next: 3,
+            id: "636a7f71091d5166f558b001",
+            pre: "636a778e091d5166f558affe",
+            next: "636a793b091d5166f558afff",
             event: 'Special Tour',
         },
         {
             img: birthday,
-            id: 3,
-            pre: 2,
-            next: 1,
+            id: "636a793b091d5166f558afff",
+            pre: "636a7f71091d5166f558b001",
+            next: "636a778e091d5166f558affe",
             event: 'Birthday',
         }
     ]

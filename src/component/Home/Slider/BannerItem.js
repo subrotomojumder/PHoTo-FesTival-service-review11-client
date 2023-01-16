@@ -1,6 +1,7 @@
 import React from 'react';
 import './Banner.css';
 import { FaCamera } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 const BannerItem = ({ item }) => {
@@ -20,7 +21,7 @@ const BannerItem = ({ item }) => {
                 <h4>Get in touch to cherish some of life's memorable moments. Videos and photos are taken with special DSLR camera.</h4>
             </div>
             <div className="absolute flex transform w-1/2 -translate-y-1/2 bottom-20 left-12 top-2/3  text-lg font-semibold text-white">
-                <button className="btn btn-outline btn-warning rounded-lg mt-6">Booking now</button>
+                <Link to={`/services/${id}`}><button className="btn btn-outline btn-warning rounded-lg mt-6">Booking now</button></Link>
             </div>
         </div>
     );

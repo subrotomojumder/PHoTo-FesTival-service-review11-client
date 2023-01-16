@@ -1,4 +1,5 @@
 import React from 'react';
+import { PhotoView } from 'react-photo-view';
 
 const PhotoFrame = () => {
     const events = [
@@ -93,7 +94,7 @@ const PhotoFrame = () => {
             </div>
             <div className="grid gap-5 row-gap-5 mb-8 lg:grid-cols-4 sm:grid-cols-2">
                 {
-                    events.map(evt => <section 
+                    events.map(evt => <section
                         key={evt.id}
                     >
                         <div
@@ -101,17 +102,19 @@ const PhotoFrame = () => {
                             className="inline-block overflow-hidden duration-300 transform bg-white rounded shadow-sm hover:-translate-y-2"
                         >
                             <div className="flex flex-col h-full">
-                                <img
-                                    src={evt.img}
-                                    className="object-cover w-full lg:h-52"
-                                    alt=""
-                                />
+                                <PhotoView src={evt.img}>
+                                    <img
+                                        src={evt.img}
+                                        className="object-cover w-full lg:h-52"
+                                        alt=""
+                                    />
+                                </PhotoView>
                                 <div className="flex-grow border border-t-0 rounded-b">
                                     <div className="p-5">
                                         <h6 className="mb-2 text-2xl font-semibold leading-5">
                                             <span className='text-sm text-gray-800'> Date: {evt.date}</span>
                                             <br />
-                                            {evt.name} 
+                                            {evt.name}
                                         </h6>
                                     </div>
                                 </div>
